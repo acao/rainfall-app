@@ -10,14 +10,15 @@ class CalculateData extends Component {
   constructor(props, state) {
     super(props, state)
   }
-  componentDidMount() {
+  componentWillMount() {
     this.props.dispatch(calculateData())
   }
   render() {
     return (
       <div style={{ paddingTop: 60 }}>
         <TopNav prevRoute={"/review-data"} title="Calculate Data" />
-        <DataTable data={this.props.results} headers={ [ 'Strain Range', 'Max Stress', 'Mean Stress' ] }/>
+        <DataTable data={this.props.results} headers={ [ 'Time Range', 'Strain', 'Max Stress', 'Mean Stress' ] }/>
+        <ActionButton route="/review-results" />
       </div>
     )
   }

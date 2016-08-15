@@ -1,20 +1,22 @@
-import fetch from 'whatwg-fetch'
+import 'whatwg-fetch'
 import { DATASET_SET, DATASET_VALIDATE, DATASET_CALCULATE } from './constants'
 
 export function setData(data) {
-  return (dispatch) => {
-    dispatch({
-      type: DATASET_SET,
-      data
-    })
+  return {
+    type: 'DATASET_SET',
+    data
+  }
+}
+export function setResults(data) {
+  return {
+    type: 'DATASET_CALCULATE_RESULTS',
+    data
   }
 }
 
 export function calculateData() {
-  console.log("calculating data")
   return (dispatch, getState) => {
-    const data = getState().data;
-    console.log(data);
+    const data = getState().dataset.data
     fetch('http://localhost:9003/calculate/rainfall', {
       method: 'POST',
       headers: {
@@ -27,22 +29,22 @@ export function calculateData() {
       return response.json()
     })
     .then((json) => {
-      console.log('parsed json', json)
-      // dispatch({
-      //   type: DATASET_VALIDATE,
-      //   data: true
-      // })
-      dispatch({
-        type: DATASET_CALCULATE,
-        data: json
-      })
+      dispatch(setResults(json))
     })
     .catch((ex) => {
-      console.log('parsing failed', ex)
-      dispatch({
-        type: DATASET_VALIDATE,
-        data: false
+      dispatch(() => {
+        return {
+          type: 'DATASET_VALIDATE',
+          data: false,
+          error: ex
+        }
       })
     })
+  }
+}
+
+function datasetValidate(){
+  return {
+
   }
 }

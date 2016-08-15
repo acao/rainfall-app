@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux'
 import * as ActionTypes from './constants'
-
+import { routerReducer } from 'react-router-redux'
 
 const initialState = {
   dataset: {
     results: [],
     valid: true,
-    data: [[0,1,2,3,4,6,7,8,9,10,11,12], [0,200,-100,300,-200,100, -200, 200,-100,300,-200,100], [0,0.02,-0.01,0.03,-0.02,0.01, -0.1,0.02,-0.01,0.03,-0.02,0.01]]
+    data: []
   }
 }
 
-export const table = createReducer([], {
+const table = createReducer([], {
   [ActionTypes.TABLE_CELL_SELECT](state, action) {
     const text = action.text.trim()
     return [ ...state, text ]
@@ -32,24 +32,36 @@ export const table = createReducer([], {
   }
 })
 
-export const dataset = createReducer(initialState.dataset, {
+const dataset = createReducer(initialState.dataset, {
   [ActionTypes.DATASET_SET](state, data) {
-    return Object.assign({}, state, { data })
+    return Object.assign({}, state, { data: data.data })
   },
   [ActionTypes.DATASET_VALIDATE](state, valid) {
     return [ ...state, { valid } ]
   },
-  [ActionTypes.DATASET_CALCULATE](state, results) {
-    return [ ...state,  { results } ]
+  [ActionTypes.DATASET_CALCULATE_RESULTS](state, { data }) {
+    console.log("results", data)
+    return Object.assign({}, state, { results: data })
   }
 })
 
 function createReducer(initialState, handlers) {
   return function reducer(state = initialState, action) {
+    console.log(action.type);
     if (handlers.hasOwnProperty(action.type)) {
+      console.log("returned a handler");
       return handlers[action.type](state, action)
     } else {
+      console.log("nope");
       return state
     }
   }
 }
+
+const rootReducer = combineReducers({
+  dataset,
+  table,
+  routing: routerReducer
+})
+
+export default rootReducer

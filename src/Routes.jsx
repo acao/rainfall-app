@@ -3,7 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
-import * as reducers from './reducers';
+import store from './store'
 
 // Containers
 import Main from './containers/Main'
@@ -11,13 +11,7 @@ import Welcome from './containers/Welcome'
 import EditDataTable from './containers/EditDataTable'
 import ReviewData from './containers/ReviewData'
 import CalculateData from './containers/CalculateData'
-
-const store = createStore(
-  combineReducers({
-    ...reducers,
-    routing: routerReducer
-  })
-)
+import ReviewResults from './containers/ReviewResults'
 
 const history = syncHistoryWithStore(browserHistory, store)
 
@@ -34,6 +28,7 @@ class Routes extends Component {
               <Route path="edit-data" component={EditDataTable} />
               <Route path="review-data" component={ReviewData} />
               <Route path="calculate-data" component={CalculateData} />
+              <Route path="review-results" component={ReviewResults} />
             </Route>
           </Router>
       </Provider>
