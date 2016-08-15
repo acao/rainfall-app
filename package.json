@@ -13,12 +13,12 @@
   },
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
-    "forward": "ngrok http -subdomain=rainfall-client 8888",
+    "forward": "ngrok http 8888",
     "start": "webpack-dev-server --progress --profile --colors",
     "lint": "eslint src/index.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Richard Schulte <richard.j.schulte@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "chart.js": "^2.2.1",
     "material-ui": "^0.15.4",
