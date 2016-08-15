@@ -12,3 +12,11 @@ An example react web project for the good folks at Equity Engineering.
 
 1. ``npm install``
 2. ``npm start`` - will start the development server
+
+## Screenshots
+
+![Welcome Screen](/docs/images/welcome.png?raw=true "Welcome Screen")
+![Edit Data](/docs/images/edit-data.png?raw=true "Edit Data")
+![Review Data](/docs/images/review-data.png?raw=true "Review Data")
+![Calculate Results](/docs/images/calculate-data.png?raw=true "Calculate Results")
+![Review Results](/docs/images/review-results.png?raw=true "Review Results")
