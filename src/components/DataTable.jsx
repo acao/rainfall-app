@@ -19,29 +19,41 @@ class DataTable extends Component {
   }
   constructor(props, state) {
     super(props, state)
+    state = {
+      editRows: false
+    }
+  }
+  renderHeaders(props) {
+    return props.headers.map((label, i)=> {
+      return <TableHeaderColumn key={i}>{label}</TableHeaderColumn>
+    })
+  }
+  renderRows(props, data){
+    return data.map((row, i)=> {
+      return this.renderRow(row, i)
+    })
+  }
+  renderRow(row, i){
+    return (
+     <TableRow key={`row-${i}`}>
+       {row.map((item, k) => {
+         return <TableRowColumn key={`cell-${i}-${k}`}>{item}</TableRowColumn>
+       })}
+     </TableRow>
+    )
   }
   render() {
-    const { props } = this
+    const { props, state } = this
     const data = props.reverse ? reverseData(props.data) : props.data ;
     return (
-     <Table selectable={false} multiSelectable={false}>
+     <Table fixedHeader selectable={false} multiSelectable={false} {...this.tableProps}>
      <TableHeader displaySelectAll={false} adjustForCheckbox={false}>
        <TableRow>
-         {props.headers.map((label, i)=> {
-           return <TableHeaderColumn key={i}>{label}</TableHeaderColumn>
-         })}
+         {this.renderHeaders(props, data)}
        </TableRow>
     </TableHeader>
       <TableBody displayRowCheckbox={false}>
-        {data.map((row, i)=> {
-          return (
-           <TableRow key={`row-${i}`}>
-           {row.map((item, k) => {
-             return <TableRowColumn key={`cell-${i}-${k}`}>{item}</TableRowColumn>
-           })}
-           </TableRow>
-          )
-        })}
+        {this.renderRows(props, data)}
       </TableBody>
     </Table>
     )

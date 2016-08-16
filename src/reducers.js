@@ -36,6 +36,9 @@ const dataset = createReducer(initialState.dataset, {
   [ActionTypes.DATASET_SET](state, data) {
     return Object.assign({}, state, { data: data.data })
   },
+  [ActionTypes.DATASET_SET_OPTIONS](state, data) {
+    return Object.assign({}, state, { options: data.options })
+  },
   [ActionTypes.DATASET_VALIDATE](state, valid) {
     return [ ...state, { valid } ]
   },

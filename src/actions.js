@@ -14,6 +14,13 @@ export function setResults(data) {
   }
 }
 
+export function setOptions(options) {
+  return {
+    type: 'DATASET_SET_OPTIONS',
+    options
+  }
+}
+
 export function calculateData() {
   return (dispatch, getState) => {
     const data = getState().dataset.data
@@ -43,8 +50,8 @@ export function calculateData() {
   }
 }
 
-function datasetValidate(){
-  return {
-
-  }
-}
+// function datasetValidate(){
+//   return {
+//
+//   }
+// }

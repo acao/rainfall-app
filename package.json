@@ -35,7 +35,8 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^1.0.0",
+    "xlsjs": "^0.7.5"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",

@@ -14,7 +14,7 @@ const TopNav = (props) => (
     <AppBar
     style={{top: 0, position: "fixed"}}
     title={props.title}
-    iconElementLeft={<Link to={props.route || "/"}><IconButton><ArrowBack color="white" /></IconButton></Link>}
+    iconElementLeft={<Link to={ props.prevRoute || "/"}><IconButton><ArrowBack color="white" /></IconButton></Link>}
     iconElementRight={
       <IconMenu
         iconButtonElement={

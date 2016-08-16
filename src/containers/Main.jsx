@@ -1,5 +1,5 @@
 import React from 'react'
-import TopNav from '../components/TopNav'
+import Paper from 'material-ui/Paper'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { RouteTransition } from 'react-router-transition';
@@ -9,7 +9,7 @@ injectTapEventPlugin();
 
 const Main = (props) => (
   <MuiThemeProvider style={{minHeight: "100%"}}>
-      {props.children}
+    {props.children}
   </MuiThemeProvider>
 )
 

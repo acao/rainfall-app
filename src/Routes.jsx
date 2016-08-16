@@ -9,6 +9,7 @@ import store from './store'
 import Main from './containers/Main'
 import Welcome from './containers/Welcome'
 import EditDataTable from './containers/EditDataTable'
+import UploadData from './containers/UploadData'
 import ReviewData from './containers/ReviewData'
 import CalculateData from './containers/CalculateData'
 import ReviewResults from './containers/ReviewResults'
@@ -26,6 +27,7 @@ class Routes extends Component {
             <Route path="/" component={Main}>
               <IndexRoute component={Welcome} />
               <Route path="edit-data" component={EditDataTable} />
+              {/*<Route path="upload-data" component={UploadData} />*/}
               <Route path="review-data" component={ReviewData} />
               <Route path="calculate-data" component={CalculateData} />
               <Route path="review-results" component={ReviewResults} />

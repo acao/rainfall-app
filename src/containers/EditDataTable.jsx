@@ -11,15 +11,10 @@ class EditDataTable extends Component {
   constructor(props, state) {
     super(props, state)
   }
-  componentWillMount() {
-    this.props.dispatch(setData([[ 0,1,2,3,4,6,7,8,9,10,11,12 ],
-    [ 0,200,-100,300,-200,100,-200,200,-100,300,-200,100 ],
-    [ 0,0.02,-0.01,0.03,-0.02,0.01,-0.1,0.02,-0.01,0.03,-0.02,0.01 ]]))
-  }
   render() {
     return (
       <div style={{paddingTop: 60}}>
-        <TopNav prevRoute={"/welcome"} title="Edit Data" />
+        <TopNav prevRoute={"/"} title="Edit Data" />
         <DataTable reverse data={this.props.data}/>
         <ActionButton route="/review-data" />
       </div>
