@@ -3,14 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "babel": {
-    "presets": [
-      "es2015",
-      "es2016",
-      "stage-1",
-      "react"
-    ]
-  },
   "scripts": {
     "build": "webpack --config webpack.production.config.js --progress --profile --colors",
     "forward": "ngrok http 8888",

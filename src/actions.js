@@ -1,5 +1,8 @@
 import 'whatwg-fetch'
-import { DATASET_SET, DATASET_VALIDATE, DATASET_CALCULATE } from './constants'
+import { calc } from './utils/http'
+import { processFileInput } from './utils/file'
+
+const debug = require('debug')('actions')
 
 export function setData(data) {
   return {
@@ -14,44 +17,33 @@ export function setResults(data) {
   }
 }
 
-export function setOptions(options) {
-  return {
-    type: 'DATASET_SET_OPTIONS',
-    options
-  }
-}
-
 export function calculateData() {
   return (dispatch, getState) => {
     const data = getState().dataset.data
-    fetch('http://localhost:9003/calculate/rainfall', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+    const getResults = calc(data)
+    getResults.then((data)=> {
+      dispatch(setResults(data))
     })
-    .then((response) => {
-      return response.json()
-    })
-    .then((json) => {
-      dispatch(setResults(json))
-    })
-    .catch((ex) => {
+    .catch((err)=> {
       dispatch(() => {
+        debug(err)
         return {
           type: 'DATASET_VALIDATE',
-          data: false,
-          error: ex
+          data: false
         }
       })
     })
   }
 }
 
-// function datasetValidate(){
-//   return {
-//
-//   }
-// }
+export function importFiles(files) {
+  return (dispatch) => {
+    const processFiles = processFileInput(files)
+    processFiles.then((data) => {
+      dispatch(setData(data))
+    })
+    .catch((err) => {
+      debug(err)
+    })
+  }
+}

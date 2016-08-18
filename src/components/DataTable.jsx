@@ -1,10 +1,7 @@
 import React, { Component, PropTypes } from 'react'
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table'
 import { reverseData } from '../utils/lib'
 
-const EditableRow = (props, state) => {
-
-}
 
 class DataTable extends Component {
   static propTypes = {
@@ -28,12 +25,12 @@ class DataTable extends Component {
       return <TableHeaderColumn key={i}>{label}</TableHeaderColumn>
     })
   }
-  renderRows(props, data){
+  renderRows(props, data) {
     return data.map((row, i)=> {
       return this.renderRow(row, i)
     })
   }
-  renderRow(row, i){
+  renderRow(row, i) {
     return (
      <TableRow key={`row-${i}`}>
        {row.map((item, k) => {
@@ -43,8 +40,8 @@ class DataTable extends Component {
     )
   }
   render() {
-    const { props, state } = this
-    const data = props.reverse ? reverseData(props.data) : props.data ;
+    const { props } = this
+    const data = props.reverse ? reverseData(props.data) : props.data
     return (
      <Table fixedHeader selectable={false} multiSelectable={false} {...this.tableProps}>
      <TableHeader displaySelectAll={false} adjustForCheckbox={false}>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory, IndexRoute } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 import store from './store'
 
 // Containers
@@ -18,7 +17,7 @@ const history = syncHistoryWithStore(browserHistory, store)
 
 class Routes extends Component {
   constructor(props, state) {
-   super(props, state)
+    super(props, state)
   }
   render() {
     return (
@@ -27,7 +26,7 @@ class Routes extends Component {
             <Route path="/" component={Main}>
               <IndexRoute component={Welcome} />
               <Route path="edit-data" component={EditDataTable} />
-              {/*<Route path="upload-data" component={UploadData} />*/}
+              <Route path="upload-data" component={UploadData} />
               <Route path="review-data" component={ReviewData} />
               <Route path="calculate-data" component={CalculateData} />
               <Route path="review-results" component={ReviewResults} />

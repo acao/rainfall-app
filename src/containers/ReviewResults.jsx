@@ -1,19 +1,14 @@
 import React from 'react'
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import { Card, CardHeader, CardMedia } from 'material-ui/Card'
 
 import TopNav from '../components/TopNav'
-import DataTable from '../components/DataTable'
-import ActionButton from '../components/ActionButton'
 import { reverseData } from '../utils/lib'
 
-
-
 import { connect } from 'react-redux'
-import { Line } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2'
 
 const ReviewResults = (props) => (
-  <div style={{paddingTop: 60}}>
-
+  <div style={{ paddingTop: 60 }}>
     <TopNav prevRoute={"/calculate-data"} title="Review Results" />
     <Card>
       <CardHeader
@@ -23,16 +18,16 @@ const ReviewResults = (props) => (
         <Line data={{
           labels: props.data[0],
           datasets: [
-              {
-                label: "Max Stress",
-                data: props.data[2],
-                spanGaps: false,
-              },
-              {
-                label: "Mean Stress",
-                data: props.data[3],
-                spanGaps: false
-              }
+            {
+              label: 'Max Stress',
+              data: props.data[2],
+              spanGaps: false
+            },
+            {
+              label: 'Mean Stress',
+              data: props.data[3],
+              spanGaps: false
+            }
           ]
         }}/>
       </CardMedia>
@@ -45,11 +40,11 @@ const ReviewResults = (props) => (
         <Line data={{
           labels: props.data[0],
           datasets: [
-              {
-                label: "Strain Range",
-                data: props.data[1],
-                spanGaps: false,
-              }
+            {
+              label: 'Strain Range',
+              data: props.data[1],
+              spanGaps: false
+            }
           ]
         }}/>
       </CardMedia>

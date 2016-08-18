@@ -43,19 +43,15 @@ const dataset = createReducer(initialState.dataset, {
     return [ ...state, { valid } ]
   },
   [ActionTypes.DATASET_CALCULATE_RESULTS](state, { data }) {
-    console.log("results", data)
     return Object.assign({}, state, { results: data })
   }
 })
 
 function createReducer(initialState, handlers) {
   return function reducer(state = initialState, action) {
-    console.log(action.type);
     if (handlers.hasOwnProperty(action.type)) {
-      console.log("returned a handler");
       return handlers[action.type](state, action)
     } else {
-      console.log("nope");
       return state
     }
   }
