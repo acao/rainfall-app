@@ -6,7 +6,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 const ActionButton = (props) => (
   <div style={{ position: 'fixed', bottom: 16, right: 16 }}>
     <Link to={props.route}>
-      <FloatingActionButton >
+      <FloatingActionButton {...props.buttonProps} >
         <ArrowForward />
       </FloatingActionButton>
     </Link>
