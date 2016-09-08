@@ -14,7 +14,7 @@ class EditDataTable extends Component {
       <div style={{ paddingTop: 60 }}>
         <TopNav prevRoute={"/"} title="Edit Data" />
         <DataTable reverse data={this.props.data}/>
-        <ActionButton route="/review-data" />
+        <ActionButton route="/review-data" buttonProps={{stuff: "stuff", color: "green"}} />
       </div>
     )
   }
