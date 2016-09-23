@@ -1,14 +1,34 @@
 import { combineReducers } from 'redux'
 import * as ActionTypes from './constants'
 import { routerReducer } from 'react-router-redux'
+import moduleConfig from './module.config.js'
+import { scenarios, cases } from './utils/fixtures'
 
 const initialState = {
   dataset: {
     results: [],
     valid: true,
-    data: []
+    data: [0,0,0]
+  },
+  ui: {
+    leftNavOpen: false
+  },
+  modules: {
+    availableModules: {
+      [moduleConfig.key]: moduleConfig,
+      hottap: {
+        shortTitle: 'HotTap Calculator',
+        title: 'HotTap'
+      }
+    },
+    currentModule: {
+      info: moduleConfig,
+      scenarios,
+      cases
+    }
   }
 }
+
 
 const table = createReducer([], {
   [ActionTypes.TABLE_CELL_SELECT](state, action) {
@@ -29,6 +49,19 @@ const table = createReducer([], {
   },
   [ActionTypes.TABLE_DEL_ROW](state) {
     return [ ...state ]
+  }
+})
+
+const modules = createReducer(initialState.modules, {
+  [ActionTypes.CHOOSE_MODULE](state, action) {
+    return Object.assign({}, state, { currentModule: state.availableModules[action.moduleKey] })
+  }
+})
+
+const ui = createReducer(initialState.ui, {
+  [ActionTypes.SET_UI_STATE](state, action) {
+    console.log(state)
+    return { ...state, ...action.data }
   }
 })
 
@@ -60,6 +93,8 @@ function createReducer(initialState, handlers) {
 const rootReducer = combineReducers({
   dataset,
   table,
+  ui,
+  modules,
   routing: routerReducer
 })
 

@@ -1,0 +1,6 @@
+console.log('fonts though')
+require('./Calibri.woff')
+require('./proximanova-bold-webfont.woff')
+require('./proximanova-semibold-webfont.woff')
+require('./proximanova-regular-webfont.woff')
+require('./proximanova-regularitalic-webfont.woff')

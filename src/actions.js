@@ -16,6 +16,12 @@ export function setResults(data) {
     data
   }
 }
+export function setUIState(data) {
+  return {
+    type: 'SET_UI_STATE',
+    data
+  }
+}
 
 export function calculateData() {
   return (dispatch, getState) => {

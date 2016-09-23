@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Calibri';
+  src: url('../fonts/Calibri.woff') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.1em;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proximanova-regular-webfont.woff') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1.1em;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('../fonts/proximanova-bold-webfont.woff') format('woff2');
+  font-weight: 700;
+  font-style: bold;
+  font-size: 1.1em;
+}
+h1,h2,h3,h4,h5{
+  font-weight: bold;
+  text-transform: uppercase;
+}

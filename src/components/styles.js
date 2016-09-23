@@ -1,15 +1,15 @@
-import { cyan500 } from 'material-ui/styles/colors'
+import styles from '../styles'
 
 export default {
   fullHeight: {
     outer: {
-      backgroundColor: cyan500,
+      backgroundColor: styles.palette.primary1Color,
       minHeight: '100%',
       margin: '0 auto',
       display: 'table'
     },
     inner: {
-      backgroundColor: cyan500,
+      backgroundColor: styles.palette.primary1Color,
       margin:0,
       textAlign: 'center',
       display: 'table-row'
