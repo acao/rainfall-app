@@ -24,6 +24,8 @@ class OverviewContainer extends Component {
     return (
       <Overview
         module={this.props.info}
+        scenarios={this.props.scenarios}
+        cases={this.props.cases}
       />
     )
   }

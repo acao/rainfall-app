@@ -46,7 +46,7 @@ export default {
 }
 
 export const gridOptions = {
-  gutter: '0px 12px',
+  gutter: 0,
   margin: 0,
   list: [
     {
@@ -56,13 +56,13 @@ export const gridOptions = {
     },
     {
       name: 'tablet',
-      query: '(min-width: 480px) and (max-width: 839px)',
+      query: '(min-width: 480px) and (max-width: 1030px)',
       margin: 0
     },
     {
       name: 'desktop',
-      query: '(min-width: 840px)',
-      margin: 0
+      query: '(min-width: 1031px)',
+      margin: 12
     }
   ]
 }

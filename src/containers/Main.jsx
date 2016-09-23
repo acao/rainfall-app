@@ -6,6 +6,7 @@ import theme, { gridOptions } from '../styles'
 // import 'uikit/src/styles/css/fonts.css'
 import LeftNav from '../components/LeftNav'
 import './main.css'
+import { withReflex } from 'reflexbox'
 
 import { Grid } from 'react-inline-grid'
 
@@ -21,4 +22,4 @@ const Main = (props) => (
 )
 
 
-export default Main
+export default withReflex()(Main)
